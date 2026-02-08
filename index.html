@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Library - Tracking Progress</title>
+<style>
+  body { 
+    font-family: 'Segoe UI', sans-serif; background: #f5f3f3; color: #616163; 
+    display: flex; flex-direction: column; align-items: center; padding: 50px;
+  }
+  .container { width: 100%; max-width: 800px; }
+  .header-actions { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+  
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px; width: 100%;
+  }
+  
+  .card {
+    background: rgb(235, 237, 238); padding: 20px; border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer;
+    transition: all 0.2s; border: 1px solid rgba(0,0,0,0.1);
+    display: flex; align-items: center; position: relative;
+  }
+  
+  .card:hover { transform: translateY(-3px); border-color: #3498db; background: #f0f7ff; }
+
+  .back-btn {
+    background: #7f8c8d; color: white; border: none; padding: 8px 15px;
+    border-radius: 6px; cursor: pointer; font-weight: bold; display: none;
+  }
+
+  /* Checkbox Styles */
+  .checkbox-container {
+    margin-left: auto;
+    padding-left: 10px;
+  }
+  .chapter-checkbox {
+    width: 22px; height: 22px; cursor: pointer;
+  }
+
+  .icon { font-size: 30px; margin-right: 15px; }
+  .card-text { flex-grow: 1; }
+  h3 { margin: 0; font-size: 1.05rem; }
+  p { color: #7f8c8d; font-size: 0.85rem; margin: 5px 0 0 0; }
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header-actions">
+      <button id="back-btn" class="back-btn">← Back</button>
+      <h1 id="view-title">📚 My Library</h1>
+    </div>
+
+    <div id="main-content" class="grid"></div>
+  </div>
+
+<script>
+  const libraryData = [
+    { 
+      title: "Week I", 
+      desc: "",
+      chapters: [
+        { 
+          name: "Day I",
+          subChapters: [
+            { title: "Grammar", file: "lessons/prince_1_1.json" },
+            { title: "Podcast", file: "lessons/prince_1_2.json" },
+            { title: "Reading", file: "lessons/alice.json" }
+          ]
+        }
+      ]
+    },
+    { 
+      title: "Week II", 
+      desc: "",
+      chapters: [
+        { 
+          name: "A Scandal in Bohemia",
+          subChapters: [
+            { title: "Part I: The Meeting", file: "lessons/sherlock_1_1.json" }
+          ]
+        }
+      ]
+    }
+  ];
+
+  const contentDiv = document.getElementById('main-content');
+  const titleEl = document.getElementById('view-title');
+  const backBtn = document.getElementById('back-btn');
+  let selectedBookIndex = null;
+
+  function renderLibrary() {
+    backBtn.style.display = 'none';
+    titleEl.innerText = "📚 My Library";
+    contentDiv.innerHTML = '';
+
+    libraryData.forEach((book, index) => {
+      const card = createCard(book.title, book.desc, "📖");
+      card.onclick = () => renderChapters(index);
+      contentDiv.appendChild(card);
+    });
+  }
+
+  function renderChapters(bookIndex) {
+    selectedBookIndex = bookIndex;
+    const book = libraryData[bookIndex];
+    backBtn.style.display = 'block';
+    backBtn.onclick = renderLibrary;
+    titleEl.innerText = book.title;
+    contentDiv.innerHTML = '';
+
+    book.chapters.forEach((chapter, index) => {
+      const card = createCard(chapter.name, `${chapter.subChapters.length} sections`, "📁");
+      card.onclick = () => renderSubChapters(index);
+      contentDiv.appendChild(card);
+    });
+  }
+
+  function renderSubChapters(chapterIndex) {
+    const book = libraryData[selectedBookIndex];
+    const chapter = book.chapters[chapterIndex];
+
+    backBtn.onclick = () => renderChapters(selectedBookIndex);
+    titleEl.innerText = chapter.name;
+    contentDiv.innerHTML = '';
+
+    chapter.subChapters.forEach(sub => {
+      // Create the card container
+      const card = createCard(sub.title, "Grammar", "📄");
+      
+      // Add Checkbox to the card
+      const checkContainer = document.createElement('div');
+      checkContainer.className = 'checkbox-container';
+      
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'chapter-checkbox';
+      
+      // Load saved state from LocalStorage
+      checkbox.checked = localStorage.getItem(sub.file) === 'true';
+
+      // Prevent card click when clicking the checkbox directly
+      checkbox.onclick = (e) => {
+        e.stopPropagation(); 
+        localStorage.setItem(sub.file, checkbox.checked);
+      };
+
+      checkContainer.appendChild(checkbox);
+      card.appendChild(checkContainer);
+
+      // Card click navigates to reader
+      card.onclick = () => {
+        window.location.href = `reader.html?lesson=${sub.file}`;
+      };
+
+      contentDiv.appendChild(card);
+    });
+  }
+
+  function createCard(title, desc, icon) {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = `
+      <span class="icon">${icon}</span>
+      <div class="card-text">
+        <h3>${title}</h3>
+        <p>${desc}</p>
+      </div>
+    `;
+    return div;
+  }
+
+  renderLibrary();
+</script>
+
+</body>
+</html>
