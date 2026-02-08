@@ -1,0 +1,827 @@
+{
+  "title": "Alice's Adventures in Wonderland",
+  "audio": "audio/story.mp3",
+  "chapters": [
+    {
+      "title": "Chapter I: Down the Rabbit-Hole",
+      "lines": [
+        {
+          "en": "Chapter I",
+          "pt": "Capítulo I"
+        },
+        {
+          "en": "This <span class='word'>is</span> a download from BBC Learning English.",
+          "pt": "Este é um download da BBC Learning English.",
+          "ge": "<b>Present Simple</b>: Usado para fatos e estados permanentes."
+        },
+        {
+          "en": "To <span class='word'>find out</span> more, visit our website.",
+          "pt": "Para saber mais, visite o nosso site.",
+          "ge": "<b>Find out</b>: Phrasal Verb. Significa 'descobrir' ou 'obter informações'."
+        },
+        {
+          "en": "Hello.",
+          "pt": "Olá."
+        },
+        {
+          "en": "This is the story of an <span class='word'>ordinary</span> girl called Alice.",
+          "pt": "Esta é a história de uma menina comum chamada Alice."
+        },
+        {
+          "en": "Our story <span class='word'>begins</span> on an ordinary summer's day.",
+          "pt": "Nossa história começa em um dia comum de verão."
+        },
+        {
+          "en": "Let's meet Alice.",
+          "pt": "Vamos conhecer Alice."
+        },
+        {
+          "en": "Here she is, <span class='word'>sitting</span> next to the river with her sister on a very hot summer's afternoon.",
+          "pt": "Aqui está ela, sentada à beira do rio com sua irmã em uma tarde de verão muito quente."
+        },
+        {
+          "en": "Her sister <span class='word'>is reading</span> a book, and with no one to talk to, Alice <span class='word'>is bored</span> and a bit sleepy.",
+          "pt": "Sua irmã está lendo um livro e, sem ninguém com quem conversar, Alice está entediada e com um pouco de sono.",
+          "ge": "<b>Present Continuous</b>: Descreve ações que estão acontecendo no momento da fala (is reading)."
+        },
+        {
+          "en": "Soon she'll be in a wonderland full of strange and wonderful adventures.",
+          "pt": "Logo ela estará em um país das maravilhas cheio de aventuras estranhas e maravilhosas."
+        },
+        {
+          "en": "But Alice <span class='word'>doesn't know</span> that yet.",
+          "pt": "Mas Alice ainda não sabe disso."
+        },
+        {
+          "en": "Oh, there's nothing to do except <span class='word'>lie on</span> the grass and pick daisies.",
+          "pt": "Oh, não há nada para fazer exceto deitar na grama e colher margaridas.",
+          "ge": "<b>Lie on</b>: Phrasal Verb. Significa 'deitar-se sobre' uma superfície."
+        },
+        {
+          "en": "<span style='color: #e67e22;'>Shall</span> I make a daisy chain for my dear little diner?",
+          "pt": "Devo fazer uma corrente de margaridas para minha querida pequena Dinah?",
+          "ge": "<b style='color: #e67e22;'>Shall</b>: Modal Verb. Usado para oferecer ajuda ou fazer sugestões de forma educada."
+        },
+        {
+          "en": "Oh, I don't know.",
+          "pt": "Oh, eu não sei."
+        },
+        {
+          "en": "It's so hot.",
+          "pt": "Está tão quente."
+        },
+        {
+          "en": "Oh dear.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "Oh dear.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "I'm late.",
+          "pt": "Estou atrasada."
+        },
+        {
+          "en": "I'm so very late.",
+          "pt": "Estou muito, muito atrasada."
+        },
+        {
+          "en": "Oh dear.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "Oh dear.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "A white rabbit.",
+          "pt": "Um coelho branco."
+        },
+        {
+          "en": "A talking white rabbit.",
+          "pt": "Um coelho branco falante."
+        },
+        {
+          "en": "Perhaps.",
+          "pt": "Talvez."
+        },
+        {
+          "en": "But a rabbit with a pocket watch.",
+          "pt": "Mas um coelho com um relógio de bolso."
+        },
+        {
+          "en": "A rabbit with pockets.",
+          "pt": "Um coelho com bolsos."
+        },
+        {
+          "en": "I <span style='color: #e67e22;'>must</span> see where he's going.",
+          "pt": "Eu preciso ver para onde ele está indo.",
+          "ge": "<b style='color: #e67e22;'>Must</b>: Modal Verb. Indica obrigação ou uma necessidade forte sentida pelo falante."
+        },
+        {
+          "en": "Alice <span class='word'>had never seen</span> a rabbit with a pocket, or a waistcoat, or a pocket watch before.",
+          "pt": "Alice nunca tinha visto um coelho com um bolso, ou um colete, ou um relógio de bolso antes."
+        },
+        {
+          "en": "So she <span class='word'>ran after</span> the rabbit as fast as she could.",
+          "pt": "Então ela correu atrás do coelho o mais rápido que pôde.",
+          "ge": "<b>Run after</b>: Phrasal Verb. Significa 'perseguir' ou 'correr atrás' de algo/alguém."
+        },
+        {
+          "en": "And when the rabbit <span class='word'>jumped down</span> a large rabbit hole, Alice jumped straight after him.",
+          "pt": "E quando o coelho pulou para dentro de uma grande toca de coelho, Alice pulou logo atrás dele.",
+          "ge": "<b>Jump down</b>: Phrasal Verb. Significa 'pular para baixo'."
+        },
+        {
+          "en": "This hole is very deep, or I'm falling very slowly.",
+          "pt": "Este buraco é muito profundo, ou estou caindo muito devagar."
+        },
+        {
+          "en": "And what a curious rabbit hole.",
+          "pt": "E que toca de coelho curiosa."
+        },
+        {
+          "en": "Who <span style='color: #e67e22;'>would</span> think a rabbit hole would have bookshelves?",
+          "pt": "Quem pensaria que uma toca de coelho teria estantes de livros?",
+          "ge": "<b style='color: #e67e22;'>Would</b>: Modal Verb. Usado aqui para expressar uma situação hipotética ou imaginária."
+        },
+        {
+          "en": "And books.",
+          "pt": "E livros."
+        },
+        {
+          "en": "Alice <span class='word'>fell down</span>, down, down, down.",
+          "pt": "Alice caiu, caiu, caiu, caiu.",
+          "ge": "<b>Fall down</b>: Phrasal Verb. Significa 'cair' ou 'despencar'."
+        },
+        {
+          "en": "She fell for so long that she began to think about Dinah, her cat.",
+          "pt": "Ela caiu por tanto tempo que começou a pensar em Dinah, sua gata."
+        },
+        {
+          "en": "Dinah will miss me tonight.",
+          "pt": "Dinah sentirá minha falta hoje à noite."
+        },
+        {
+          "en": "I hope they'll remember her milk at tea time.",
+          "pt": "Espero que se lembrem do leite dela na hora do chá."
+        },
+        {
+          "en": "Dinah, my dear.",
+          "pt": "Dinah, minha querida."
+        },
+        {
+          "en": "I wish you were down here with me.",
+          "pt": "Eu gostaria que você estivesse aqui embaixo comigo."
+        },
+        {
+          "en": "Alice was beginning to feel quite sleepy, when suddenly her fall was over, and she <span class='word'>found herself</span> sitting on a pile of leaves and grass.",
+          "pt": "Alice estava começando a sentir bastante sono, quando de repente sua queda acabou, e ela se viu sentada em uma pilha de folhas e grama."
+        },
+        {
+          "en": "Ouch!",
+          "pt": "Ai!"
+        },
+        {
+          "en": "Who's there?",
+          "pt": "Quem está aí?"
+        },
+        {
+          "en": "Oh, my ears and whiskers.",
+          "pt": "Oh, minhas orelhas e bigodes.",
+          "ge": "<b>Ears and whiskers</b>: Expressão idiomática. Uma exclamação de surpresa ou aflição típica do personagem."
+        },
+        {
+          "en": "Oh, how late it's getting.",
+          "pt": "Oh, como está ficando tarde."
+        },
+        {
+          "en": "Wait!",
+          "pt": "Espere!"
+        },
+        {
+          "en": "Please, sir, wait a moment.",
+          "pt": "Por favor, senhor, espere um momento."
+        },
+        {
+          "en": "The white rabbit ran down a long tunnel.",
+          "pt": "O coelho branco correu por um longo túnel."
+        },
+        {
+          "en": "Alice ran after him.",
+          "pt": "Alice correu atrás dele."
+        },
+        {
+          "en": "But when she reached the end of the tunnel, she found only a long hall with doors all the way round.",
+          "pt": "Mas quando ela chegou ao fim do túnel, encontrou apenas um longo corredor com portas por todos os lados."
+        },
+        {
+          "en": "Alice tried to open the doors, but they were all locked.",
+          "pt": "Alice tentou abrir as portas, mas estavam todas trancadas."
+        },
+        {
+          "en": "Then she saw a table with a tiny key on it.",
+          "pt": "Então ela viu uma mesa com uma chave minúscula em cima."
+        },
+        {
+          "en": "These doors are all too big.",
+          "pt": "Estas portas são todas grandes demais."
+        },
+        {
+          "en": "There <span style='color: #e67e22;'>must</span> be a smaller door somewhere.",
+          "pt": "Deve haver uma porta menor em algum lugar."
+        },
+        {
+          "en": "I wonder.",
+          "pt": "Eu me pergunto."
+        },
+        {
+          "en": "Hmm.",
+          "pt": "Hmm."
+        },
+        {
+          "en": "Let me <span class='word'>take a look</span> behind this little curtain.",
+          "pt": "Deixe-me dar uma olhada atrás desta cortininha.",
+          "ge": "<b>Take a look</b>: Colocação/Expressão. Significa 'olhar' ou 'dar uma olhada'."
+        },
+        {
+          "en": "Oh, a tiny little door.",
+          "pt": "Oh, uma porta bem pequenininha."
+        },
+        {
+          "en": "Let me try the key.",
+          "pt": "Deixe-me tentar a chave."
+        },
+        {
+          "en": "What a beautiful garden.",
+          "pt": "Que jardim lindo."
+        },
+        {
+          "en": "But how <span style='color: #e67e22;'>can</span> I visit it?",
+          "pt": "Mas como posso visitá-lo?",
+          "ge": "<b style='color: #e67e22;'>Can</b>: Modal Verb. Expressa habilidade ou possibilidade."
+        },
+        {
+          "en": "The door is so tiny, I <span class='word'>can't even</span> fit my head through.",
+          "pt": "A porta é tão minúscula que eu não consigo nem passar a cabeça."
+        },
+        {
+          "en": "Oh, <span class='word'>it's no use</span>.",
+          "pt": "Oh, não adianta.",
+          "ge": "<b>It's no use</b>: Expressão idiomática. Significa que algo é inútil ou não trará resultados."
+        },
+        {
+          "en": "I wish I <span style='color: #e67e22;'>could</span> fold up like a telescope.",
+          "pt": "Eu gostaria de poder me dobrar como um telescópio.",
+          "ge": "<b>Fold up</b>: Phrasal Verb. Significa 'dobrar' ou 'encolher'."
+        },
+        {
+          "en": "Wait a minute.",
+          "pt": "Espere um minuto."
+        },
+        {
+          "en": "What's this?",
+          "pt": "O que é isto?"
+        },
+        {
+          "en": "It certainly wasn't here before.",
+          "pt": "Com certeza não estava aqui antes."
+        },
+        {
+          "en": "A bottle.",
+          "pt": "Uma garrafa."
+        },
+        {
+          "en": "I wonder what it is.",
+          "pt": "Eu me pergunto o que é."
+        },
+        {
+          "en": "Let me see the label.",
+          "pt": "Deixe-me ver o rótulo."
+        },
+        {
+          "en": "Hmm.",
+          "pt": "Hmm."
+        },
+        {
+          "en": "Drink me.",
+          "pt": "Beba-me."
+        },
+        {
+          "en": "Oh.",
+          "pt": "Oh."
+        },
+        {
+          "en": "Oh.",
+          "pt": "Oh."
+        },
+        {
+          "en": "Oh!",
+          "pt": "Oh!"
+        },
+        {
+          "en": "What a curious feeling!",
+          "pt": "Que sensação curiosa!"
+        },
+        {
+          "en": "I<span class='word'>'m folding up</span> like a telescope!",
+          "pt": "Estou me dobrando como um telescópio!"
+        },
+        {
+          "en": "And so she was.",
+          "pt": "E assim ela estava."
+        },
+        {
+          "en": "Alice <span class='word'>got</span> smaller and smaller until she was small enough to fit through the door.",
+          "pt": "Alice ficou cada vez menor até ficar pequena o suficiente para passar pela porta."
+        },
+        {
+          "en": "But she<span class='word'>'d forgotten</span> something.",
+          "pt": "Mas ela tinha esquecido algo."
+        },
+        {
+          "en": "The key!",
+          "pt": "A chave!"
+        },
+        {
+          "en": "Alice was too small to reach the key on the table.",
+          "pt": "Alice era pequena demais para alcançar a chave em cima da mesa."
+        },
+        {
+          "en": "She tried and tried to <span class='word'>climb up</span> the table leg, but it was too slippery.",
+          "pt": "Ela tentou e tentou subir pela perna da mesa, mas era muito escorregadia.",
+          "ge": "<b>Climb up</b>: Phrasal Verb. Significa 'subir' ou 'escalar'."
+        },
+        {
+          "en": "When she <span class='word'>had tired herself out</span> with trying, poor little Alice sat down and cried.",
+          "pt": "Quando ela se cansou de tanto tentar, a pobre Alice sentou-se e chorou.",
+          "ge": "<b>Tire out</b>: Phrasal Verb. Significa 'exaurir' ou 'cansar extremamente'."
+        },
+        {
+          "en": "It's no use.",
+          "pt": "Não adianta."
+        },
+        {
+          "en": "I can't reach the key, so I can't get into the garden and that's that.",
+          "pt": "Não consigo alcançar a chave, então não consigo entrar no jardim e pronto.",
+          "ge": "<b>That's that</b>: Expressão idiomática. Significa 'e pronto', 'fim de papo'."
+        },
+        {
+          "en": "There's no use crying like that.",
+          "pt": "Não adianta chorar assim."
+        },
+        {
+          "en": "Alice, I advise you to stop <span class='word'>this minute</span>.",
+          "pt": "Alice, eu a aconselho a parar neste exato momento."
+        },
+        {
+          "en": "Oh.",
+          "pt": "Oh."
+        },
+        {
+          "en": "What's this?",
+          "pt": "O que é isto?"
+        },
+        {
+          "en": "A little glass box.",
+          "pt": "Uma caixinha de vidro."
+        },
+        {
+          "en": "With cake inside!",
+          "pt": "Com bolo dentro!"
+        },
+        {
+          "en": "Oh!",
+          "pt": "Oh!"
+        },
+        {
+          "en": "And there's a note.",
+          "pt": "E tem um bilhete."
+        },
+        {
+          "en": "Eat me.",
+          "pt": "Coma-me."
+        },
+        {
+          "en": "Hmm.",
+          "pt": "Hmm."
+        },
+        {
+          "en": "I wonder if it'll <span class='word'>make me grow</span>.",
+          "pt": "Eu me pergunto se isso vai me fazer crescer."
+        },
+        {
+          "en": "If I grow, I will be able to reach the key.",
+          "pt": "Se eu crescer, poderei alcançar a chave."
+        },
+        {
+          "en": "But what if it makes me even smaller?",
+          "pt": "Mas e se isso me deixar ainda menor?"
+        },
+        {
+          "en": "Well, if it makes me smaller, I will <span style='color: #e67e22;'>be able to</span> creep under the door.",
+          "pt": "Bem, se me deixar menor, eu poderei rastejar por baixo da porta."
+        },
+        {
+          "en": "And Alice began to eat the cake.",
+          "pt": "E Alice começou a comer o bolo."
+        },
+        {
+          "en": "Did she grow big enough to reach the key?",
+          "pt": "Será que ela cresceu o suficiente para alcançar a chave?"
+        },
+        {
+          "en": "Or perhaps the cake made her small enough to <span class='word'>creep under</span> the door and into her beautiful garden.",
+          "pt": "Ou talvez o bolo a tenha deixado pequena o suficiente para rastejar por baixo da porta e entrar em seu belo jardim.",
+          "ge": "<b>Creep under</b>: Phrasal Verb. Significa 'rastejar' ou 'passar furtivamente por baixo'."
+        },
+        {
+          "en": "I'll tell you what happened next time.",
+          "pt": "Eu te conto o que aconteceu na próxima vez."
+        },
+        {
+          "en": "Goodbye.",
+          "pt": "Adeus."
+        }
+      ]
+    },
+    {
+      "title": "Chapter II",
+      "lines": [
+        {
+          "en": "Chapter II",
+          "pt": "Capítulo II"
+        },
+        {
+          "en": "This is a download from BBC Learning English.",
+          "pt": "Este é um download da BBC Learning English."
+        },
+        {
+          "en": "To find out more, visit our website.",
+          "pt": "Para saber mais, visite o nosso site."
+        },
+        {
+          "en": "Curiouser and curious.",
+          "pt": "Cada vez mais curioso.",
+          "ge": "<b>Curiouser</b>: Alice usa uma gramática inventada (incorreta) para enfatizar o quão estranha a situação é."
+        },
+        {
+          "en": "I<span class='word'>'m growing</span>.",
+          "pt": "Estou crescendo."
+        },
+        {
+          "en": "My feet are so far away.",
+          "pt": "Meus pés estão tão longe."
+        },
+        {
+          "en": "Goodbye, feet.",
+          "pt": "Adeus, pés."
+        },
+        {
+          "en": "How will I <span class='word'>put</span> my shoes and socks <span class='word'>on</span>, I wonder?",
+          "pt": "Como vou colocar meus sapatos e meias, eu me pergunto?",
+          "ge": "<b>Put on</b>: Phrasal Verb. Significa 'vestir' ou 'calçar'."
+        },
+        {
+          "en": "Alice grew so big that her head hit the ceiling.",
+          "pt": "Alice cresceu tanto que sua cabeça bateu no teto."
+        },
+        {
+          "en": "Ouch!",
+          "pt": "Ai!"
+        },
+        {
+          "en": "It was easy to reach the table now.",
+          "pt": "Era fácil alcançar a mesa agora."
+        },
+        {
+          "en": "She <span class='word'>picked up</span> the tiny key and rushed to the door.",
+          "pt": "Ela pegou a chave minúscula e correu para a porta.",
+          "ge": "<b>Pick up</b>: Phrasal Verb. Significa 'pegar' ou 'levantar' algo."
+        },
+        {
+          "en": "But in her excitement, she forgot something again.",
+          "pt": "Mas em sua empolgação, ela esqueceu algo novamente."
+        },
+        {
+          "en": "Oh, this is hopeless.",
+          "pt": "Oh, isso é inútil."
+        },
+        {
+          "en": "I'm much too big for this door now.",
+          "pt": "Estou grande demais para esta porta agora."
+        },
+        {
+          "en": "Now, I'll never get into the garden.",
+          "pt": "Agora, nunca entrarei no jardim."
+        },
+        {
+          "en": "I <span style='color: #e67e22;'>can</span> only <span class='word'>look through</span> the door with one eye.",
+          "pt": "Eu só consigo olhar pela porta com um olho.",
+          "ge": "<b>Look through</b>: Phrasal Verb. Significa 'olhar através de' algo."
+        },
+        {
+          "en": "Oh!",
+          "pt": "Oh!"
+        },
+        {
+          "en": "Alice was over nine feet tall.",
+          "pt": "Alice tinha mais de nove pés de altura."
+        },
+        {
+          "en": "And when a girl that big cries, the tears are big, too.",
+          "pt": "E quando uma menina daquele tamanho chora, as lágrimas são grandes também."
+        },
+        {
+          "en": "Alice cried and cried until half the hall <span class='word'>was filled with</span> a salty pool of tears.",
+          "pt": "Alice chorou e chorou até que metade do saguão ficou cheia de uma poça salgada de lágrimas."
+        },
+        {
+          "en": "After a time, Alice heard a little <span class='word'>patter</span> in her feet in the distance.",
+          "pt": "Depois de um tempo, Alice ouviu um leve ruído de passos ao longe."
+        },
+        {
+          "en": "She dried her eyes to see what <span class='word'>was coming</span>.",
+          "pt": "Ela enxugou os olhos para ver o que estava vindo."
+        },
+        {
+          "en": "Oh!",
+          "pt": "Oh!"
+        },
+        {
+          "en": "The Duchess will be waiting.",
+          "pt": "A Duquesa estará esperando."
+        },
+        {
+          "en": "Oh, my.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "Oh, my.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "She will be so very angry with me.",
+          "pt": "Ela ficará muito brava comigo."
+        },
+        {
+          "en": "Oh, my.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "The sight of the white rabbit, splendidly dressed in his best clothes and carrying a large fan and a pair of white leather gloves was enough to <span class='word'>stop Alice's tears</span>.",
+          "pt": "A visão do coelho branco, esplendidamente vestido com suas melhores roupas e carregando um grande leque e um par de luvas de couro branco, foi suficiente para parar as lágrimas de Alice."
+        },
+        {
+          "en": "If you please, sir.",
+          "pt": "Por favor, senhor."
+        },
+        {
+          "en": "Oh!",
+          "pt": "Oh!"
+        },
+        {
+          "en": "Oh, my.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "But don't <span class='word'>go</span>.",
+          "pt": "Mas não vá."
+        },
+        {
+          "en": "I won't hurt.",
+          "pt": "Eu não vou machucar."
+        },
+        {
+          "en": "Oh, dear.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "You<span class='word'>'ve dropped</span> your gloves.",
+          "pt": "Você deixou cair suas luvas.",
+          "ge": "<b>Present Perfect</b>: Usado para uma ação que aconteceu em um tempo indefinido no passado e tem um resultado no presente."
+        },
+        {
+          "en": "But look.",
+          "pt": "Mas olhe."
+        },
+        {
+          "en": "What a pretty fan.",
+          "pt": "Que leque bonito."
+        },
+        {
+          "en": "And crying is such <span class='word'>hot work</span>.",
+          "pt": "E chorar dá tanto trabalho e calor."
+        },
+        {
+          "en": "Oh, that's better.",
+          "pt": "Oh, assim está melhor."
+        },
+        {
+          "en": "Oh, dear.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "How strange everything is today.",
+          "pt": "Como tudo está estranho hoje."
+        },
+        {
+          "en": "Yesterday, things were normal.",
+          "pt": "Ontem, as coisas estavam normais."
+        },
+        {
+          "en": "But today, I'm not sure if I'm the same girl who <span class='word'>woke up</span> this morning.",
+          "pt": "Mas hoje, não tenho certeza se sou a mesma menina que acordou esta manhã.",
+          "ge": "<b>Wake up</b>: Phrasal Verb. Significa 'acordar'."
+        },
+        {
+          "en": "But if I'm not the girl who woke up this morning, the question is, who am I?",
+          "pt": "Mas se eu não sou a menina que acordou esta manhã, a pergunta é: quem sou eu?"
+        },
+        {
+          "en": "Alice spun herself while she talked.",
+          "pt": "Alice girou enquanto falava."
+        },
+        {
+          "en": "She felt much cooler.",
+          "pt": "Ela se sentiu bem mais fresca."
+        },
+        {
+          "en": "But after a minute or two, something started happening.",
+          "pt": "Mas depois de um minuto ou dois, algo começou a acontecer."
+        },
+        {
+          "en": "Oh, here's that feeling again.",
+          "pt": "Oh, aqui está aquela sensação de novo."
+        },
+        {
+          "en": "The something kept happening.",
+          "pt": "O 'algo' continuou acontecendo."
+        },
+        {
+          "en": "Alice <span class='word'>kept fanning</span> herself.",
+          "pt": "Alice continuou se abanando."
+        },
+        {
+          "en": "I don't believe it.",
+          "pt": "Eu não acredito nisso."
+        },
+        {
+          "en": "I <span style='color: #e67e22;'>must</span> be.",
+          "pt": "Eu devo estar."
+        },
+        {
+          "en": "I am.",
+          "pt": "Eu estou."
+        },
+        {
+          "en": "I'm growing smaller again.",
+          "pt": "Estou ficando menor de novo."
+        },
+        {
+          "en": "Smaller than the table.",
+          "pt": "Menor que a mesa."
+        },
+        {
+          "en": "Hello, feet.",
+          "pt": "Olá, pés."
+        },
+        {
+          "en": "Hello, feet.",
+          "pt": "Olá, pés."
+        },
+        {
+          "en": "It's good to see you again.",
+          "pt": "É bom ver vocês de novo."
+        },
+        {
+          "en": "Soon, Alice was smaller than ever.",
+          "pt": "Logo, Alice estava menor do que nunca."
+        },
+        {
+          "en": "She was still <span class='word'>shrinking</span> and shrinking and she didn't know why.",
+          "pt": "Ela ainda estava encolhendo e encolhendo e não sabia por quê."
+        },
+        {
+          "en": "Oh, dear.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "I<span class='word'>'m getting</span> very small.",
+          "pt": "Estou ficando muito pequena."
+        },
+        {
+          "en": "Oh, I'm getting much too small.",
+          "pt": "Oh, estou ficando pequena demais."
+        },
+        {
+          "en": "Oh, dear.",
+          "pt": "Oh, céus."
+        },
+        {
+          "en": "I <span style='color: #e67e22;'>shall</span> <span class='word'>fade away</span> altogether.",
+          "pt": "Eu vou desaparecer completamente.",
+          "ge": "<b>Fade away</b>: Phrasal Verb. Significa 'desaparecer' ou 'sumir gradualmente'."
+        },
+        {
+          "en": "Oh, the fan.",
+          "pt": "Oh, o leque."
+        },
+        {
+          "en": "Fan.",
+          "pt": "Abanar."
+        },
+        {
+          "en": "Just in time.",
+          "pt": "Bem na hora."
+        },
+        {
+          "en": "Alice <span class='word'>threw</span> the fan on the floor so she <span style='color: #e67e22;'>wouldn't</span> get any smaller.",
+          "pt": "Alice jogou o leque no chão para não ficar ainda menor."
+        },
+        {
+          "en": "That was a <span class='word'>lucky escape</span>.",
+          "pt": "Foi um escape de sorte."
+        },
+        {
+          "en": "But now I'm small enough to get into the garden.",
+          "pt": "Mas agora sou pequena o suficiente para entrar no jardim."
+        },
+        {
+          "en": "Poor Alice.",
+          "pt": "Pobre Alice."
+        },
+        {
+          "en": "There she stood at the little door, but it was locked again.",
+          "pt": "Lá estava ela na portinha, mas estava trancada de novo."
+        },
+        {
+          "en": "And there was the little key back in its place, out of reach, on the table.",
+          "pt": "E lá estava a chavinha de volta ao seu lugar, fora de alcance, em cima da mesa."
+        },
+        {
+          "en": "Oh, not again.",
+          "pt": "Oh, de novo não."
+        },
+        {
+          "en": "This is hopeless.",
+          "pt": "Isso é inútil."
+        },
+        {
+          "en": "I'll never get that key now.",
+          "pt": "Eu nunca vou conseguir aquela chave agora."
+        },
+        {
+          "en": "I <span class='word'>so badly</span> wanted to see the garden.",
+          "pt": "Eu queria tanto ver o jardim."
+        },
+        {
+          "en": "And things are worse than ever.",
+          "pt": "E as coisas estão piores do que nunca."
+        },
+        {
+          "en": "I<span class='word'>'ve never been</span> so small as this in my life.",
+          "pt": "Nunca estive tão pequena assim na minha vida."
+        },
+        {
+          "en": "Never.",
+          "pt": "Nunca."
+        },
+        {
+          "en": "Things were as bad as ever.",
+          "pt": "As coisas estavam ruins como sempre."
+        },
+        {
+          "en": "And they were about to get worse.",
+          "pt": "E estavam prestes a piorar."
+        },
+        {
+          "en": "And poor little Alice <span class='word'>fell into</span> a pool of her own tears.",
+          "pt": "E a pobre Alice caiu em uma poça de suas próprias lágrimas.",
+          "ge": "<b>Fall into</b>: Phrasal Verb. Significa 'cair dentro de' algo."
+        },
+        {
+          "en": "Luckily, she knew how to swim.",
+          "pt": "Felizmente, ela sabia nadar."
+        },
+        {
+          "en": "But she wasn't the only one who <span class='word'>had fallen</span> into the pool.",
+          "pt": "Mas ela não era a única que tinha caído na poça."
+        },
+        {
+          "en": "Next time, Alice meets a dodo, tries to make friends with a mouse, and joins in a very, very curious race.",
+          "pt": "Na próxima vez, Alice encontra um dodo, tenta fazer amizade com um rato e participa de uma corrida muito, muito curiosa."
+        },
+        {
+          "en": "Goodbye.",
+          "pt": "Adeus."
+        },
+        {
+          "en": "Goodbye.",
+          "pt": "Adeus."
+        }
+      ]
+    }
+  ]
+}
