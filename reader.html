@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English Reader - Pro Edition</title>
+<style>
+  :root { 
+    --bg: #f5f7fa; 
+    --text: #2c3e50; 
+    --sub-text: #7f8c8d; 
+    --accent: #2980b9; 
+    --grammar: #27ae60; 
+    --border: rgba(0,0,0,0.1); 
+    --tooltip-bg: #333;
+    --folder-bg: rgba(0,0,0,0.05);
+    --ge-bg: rgba(0,0,0,0.03);
+    --ge-border: #27ae60;
+    --input-bg: #ffffff;
+    --active-item: rgba(41, 128, 185, 0.1);
+    --word-highlight: rgba(41, 128, 185, 0.15); /* New static highlight color */
+  }
+  
+  body.dark-mode { 
+    --bg: #121212; 
+    --text: #e0e0e0; 
+    --sub-text: #aaaaaa; 
+    --border: rgba(255,255,255,0.15); 
+    --accent: #64b5f6; 
+    --grammar: #81c784;
+    --tooltip-bg: #444;
+    --ge-bg: rgba(255,255,255,0.05);
+    --input-bg: #1e1e1e;
+    --active-item: rgba(100, 181, 246, 0.15);
+    --word-highlight: rgba(100, 181, 246, 0.2);
+  }
+  
+  html, body { 
+    margin: 0; padding: 0; height: 100vh; width: 100vw; overflow: hidden; 
+    background-color: var(--bg); color: var(--text);
+    font-family: "Helvetica Neue", Arial, sans-serif; 
+    display: flex; justify-content: center; 
+    transition: background 0.3s, color 0.3s; 
+  }
+  
+  #main-wrapper { 
+    width: 100%; max-width: 800px; height: 100vh; 
+    display: flex; flex-direction: column; 
+    padding: 20px 40px 110px 40px; 
+    box-sizing: border-box; position: relative; 
+  }
+
+  #content-area { 
+    flex-grow: 1; display: flex; flex-direction: column; justify-content: center; 
+    gap: 20px; overflow: hidden; 
+    cursor: default; 
+  }
+
+  .top-bar { position: absolute; top: 15px; right: 20px; display: flex; gap: 15px; z-index: 1000; }
+  .icon-btn { background: none; border: none; font-size: 22px; cursor: pointer; opacity: 0.6; color: var(--text); transition: opacity 0.2s; }
+  .icon-btn:hover { opacity: 1; }
+
+  .audio-bar {
+    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 15px;
+    background: var(--bg); padding: 10px 20px; border-radius: 50px; 
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15); border: 1px solid var(--border); z-index: 2000;
+    width: 90%; max-width: 600px; box-sizing: border-box; color: var(--text);
+  }
+  audio { height: 40px; outline: none; flex-grow: 1; width: auto; min-width: 200px; }
+  .v-sep { width: 1px; height: 25px; background: var(--border); margin: 0 5px; }
+
+  .overlay-menu { 
+    display: none; position: absolute; right: 0; top: 45px; 
+    background: var(--bg); border: 1px solid var(--border); 
+    padding: 20px; border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    width: 340px; z-index: 1001; color: var(--text); 
+    max-height: 80vh; overflow-y: auto; 
+  }
+  
+  .menu-section { margin-bottom: 20px; padding-bottom: 5px; border-bottom: 1px solid var(--border); }
+  .menu-title { font-size: 11px; font-weight: bold; color: var(--sub-text); text-transform: uppercase; margin-bottom: 10px; display: block; }
+  
+  .link-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; margin-bottom: 5px; background: rgba(0,0,0,0.03); border-radius: 6px; cursor: pointer; color: var(--text); font-size: 13px; transition: 0.2s; }
+  .link-item:hover { background: var(--accent); color: white; }
+  .link-item.active { background: var(--active-item); border: 1px solid var(--accent); color: var(--accent); }
+
+  /* Text Styles */
+  .target-lang { font-size: 24px; line-height: 1.5; margin: 0; font-weight: 500; cursor: default; }
+  .native-lang { color: var(--sub-text); font-size: 15px; margin: 4px 0; font-style: italic; line-height: 1.4; cursor: default; }
+  
+  .hidden { display: none !important; }
+  
+  /* Grammar Styles */
+  .grammar-point {
+    border-bottom: 2px dashed var(--grammar); cursor: help; position: relative; border-radius: 2px;
+  }
+  .grammar-point:hover::after {
+    content: attr(data-reason);
+    position: absolute; bottom: 130%; left: 50%; transform: translateX(-50%);
+    background: var(--grammar); color: #fff; padding: 6px 12px; border-radius: 6px;
+    font-size: 12px; font-weight: bold; white-space: nowrap; z-index: 5000; pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .ge-wrapper { margin-top: 5px; }
+  .ge-toggle-btn { 
+    background: none; border: none; cursor: pointer; color: var(--sub-text); 
+    font-size: 12px; display: flex; align-items: center; gap: 5px; padding: 0; transition: color 0.2s;
+  }
+  .ge-toggle-btn:hover { color: var(--accent); }
+  .ge-content {
+    display: none; margin-top: 8px; padding: 10px 15px;
+    background: var(--ge-bg); border-left: 3px solid var(--ge-border);
+    border-radius: 0 6px 6px 0; font-size: 14px; line-height: 1.5; color: var(--text);
+  }
+
+  /* Highlighted Word Style - Purely Visual */
+  .word { 
+    border-radius: 4px; 
+    padding: 0 2px; 
+    display: inline-block; 
+    line-height: 1.2; 
+    background-color: var(--word-highlight);
+    color: var(--accent);
+    font-weight: 500;
+  }
+  
+  .progress-container { width: 100%; height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 10px; margin-top: 20px; }
+  #progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
+  
+  .page-nav { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; z-index: 10; position: relative; }
+  .nav-btn { background: none; border: 1px solid var(--accent); color: var(--accent); padding: 6px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+  .nav-btn:hover { background: var(--accent); color: white; }
+  .nav-btn:disabled { opacity: 0.2; cursor: default; background: none; color: var(--accent); }
+
+  .btn-small { background: var(--accent); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; transition: opacity 0.2s;}
+  .btn-small:hover { opacity: 0.8; }
+</style>
+</head>
+<body onclick="closeAllMenus()">
+
+<div id="main-wrapper">
+  <div class="top-bar">
+    <button class="icon-btn" onclick="location.href='index copy.html'" title="Home Library">🏠</button>
+    <button class="icon-btn" onclick="event.stopPropagation(); toggleMenu('chapter-menu')" title="Chapters">📚</button>
+    <button class="icon-btn" onclick="event.stopPropagation(); toggleMenu('bookmark-menu')" title="Bookmarks">📑</button>
+    <button class="icon-btn" onclick="event.stopPropagation(); toggleMenu('settings-menu')" title="Settings">⚙️</button>
+    
+    <div id="chapter-menu" class="overlay-menu" onclick="event.stopPropagation()">
+      <div class="menu-section" style="border:none">
+        <span class="menu-title">📚 Chapters</span>
+        <div id="chapter-list"></div>
+      </div>
+    </div>
+
+    <div id="bookmark-menu" class="overlay-menu" onclick="event.stopPropagation()">
+      <div class="menu-section">
+        <span class="menu-title">📑 Bookmarks</span>
+        <div id="text-bookmark-list"></div>
+      </div>
+      <div class="menu-section" style="border:none">
+        <span class="menu-title">🎧 Audio Stamps</span>
+        <div id="audio-bookmark-list"></div>
+      </div>
+    </div>
+
+    <div id="settings-menu" class="overlay-menu" onclick="event.stopPropagation()">
+      <div class="menu-section" style="border:none">
+        <span class="menu-title">Display Settings</span>
+        <label><input type="checkbox" id="dark-toggle" onchange="applySettings()"> Dark Mode</label><br>
+        <label><input type="checkbox" id="hide-pt-toggle" onchange="applySettings()"> Hide Portuguese</label>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-bottom: 5px; margin-top:10px;">
+    <h1 id="lesson-title" style="font-size: 1rem; color: var(--accent); margin:0;">Loading...</h1>
+    <span id="chapter-subtitle" style="font-size: 0.85rem; color: var(--sub-text); display:block; margin-top:3px;"></span>
+  </div>
+
+  <div class="progress-container"><div id="progress-fill"></div></div>
+  <div id="content-area"></div>
+
+  <div class="page-nav">
+    <button id="prev-btn" class="nav-btn" onclick="changePage(-1)">← Prev</button>
+    <div id="page-indicator" style="font-size:11px; font-weight:bold; color:var(--sub-text);">0 / 0</div>
+    <button id="next-btn" class="nav-btn" onclick="changePage(1)">Next →</button>
+  </div>
+  
+  <div class="audio-bar" onclick="event.stopPropagation()">
+    <button class="icon-btn" onclick="skipAudio(-5)" style="font-size:18px;" title="Back 5s">↺</button>
+    <audio id="main-audio" controls></audio>
+    <button class="icon-btn" onclick="skipAudio(5)" style="font-size:18px;" title="Forward 5s">↻</button>
+    
+    <div class="v-sep"></div>
+    <button class="icon-btn" onclick="handleNewTextBookmark()" style="font-size:18px;" title="Bookmark Page">📑</button>
+    <button class="icon-btn" onclick="handleNewAudioBookmark()" style="font-size:18px;" title="Bookmark Audio">🎧</button>
+  </div>
+</div>
+
+<script>
+// Global variables for chapters
+let bookData = null; 
+let allChapters = [];
+let currentChapterIdx = 0;
+
+let currentChapterLines = []; 
+let currentPage = 0, currentLessonFile = "";
+// UPDATED: Increased lines per page to 5
+const linesPerPage = 5;
+
+let textBookmarks = JSON.parse(localStorage.getItem('en_text_bookmarks')) || [];
+let audioBookmarks = JSON.parse(localStorage.getItem('en_audio_bookmarks')) || [];
+let grammarRules = {}; 
+
+let appSettings = JSON.parse(localStorage.getItem('en_reader_settings')) || {
+  darkMode: false,
+  hidePt: true 
+};
+
+async function init() {
+  if (appSettings.darkMode) {
+    document.body.classList.add('dark-mode');
+  }
+  document.getElementById('dark-toggle').checked = appSettings.darkMode;
+  document.getElementById('hide-pt-toggle').checked = appSettings.hidePt;
+
+  const params = new URLSearchParams(window.location.search);
+  const lessonToLoad = params.get('lesson');
+
+  await loadGrammar();
+
+  if (lessonToLoad) {
+    loadLesson(lessonToLoad);
+  } else {
+    document.getElementById('lesson-title').textContent = "No lesson selected.";
+  }
+}
+
+async function loadGrammar() {
+    try {
+        const res = await fetch('grammar.json');
+        if (!res.ok) throw new Error("Could not load grammar file");
+        grammarRules = await res.json();
+    } catch (err) {
+        grammarRules = {};
+    }
+}
+
+async function loadLesson(fileName, startPage = 0) {
+  try {
+    const res = await fetch(fileName);
+    if(!res.ok) throw new Error("Failed to load lesson");
+    const data = await res.json();
+    
+    bookData = data;
+    currentLessonFile = fileName;
+
+    if (data.chapters && Array.isArray(data.chapters)) {
+      allChapters = data.chapters;
+    } else {
+      allChapters = [{
+        title: "Main Content",
+        lines: data.lines || []
+      }];
+    }
+
+    // Audio Setup
+    const audioEl = document.getElementById('main-audio');
+    if(data.audio) { 
+        audioEl.src = data.audio; 
+        audioEl.parentElement.style.display = "flex";
+    } else { audioEl.parentElement.style.display = "none"; }
+    
+    loadChapter(0, startPage);
+    renderChapterList();
+
+  } catch (err) { 
+    document.getElementById('lesson-title').textContent = "Error loading lesson data.";
+    console.error(err);
+  }
+}
+
+function loadChapter(chapterIndex, page = 0) {
+  if (chapterIndex < 0 || chapterIndex >= allChapters.length) return;
+  
+  currentChapterIdx = chapterIndex;
+  currentChapterLines = allChapters[chapterIndex].lines;
+  currentPage = page;
+  
+  document.getElementById('lesson-title').textContent = bookData.title;
+  const chTitle = allChapters[chapterIndex].title || `Chapter ${chapterIndex + 1}`;
+  document.getElementById('chapter-subtitle').textContent = chTitle;
+
+  renderPage();
+  renderChapterList();
+}
+
+function renderChapterList() {
+  const list = document.getElementById('chapter-list');
+  list.innerHTML = '';
+  
+  allChapters.forEach((chap, idx) => {
+    const div = document.createElement('div');
+    div.className = `link-item ${idx === currentChapterIdx ? 'active' : ''}`;
+    div.innerHTML = `<span>${chap.title || 'Chapter '+(idx+1)}</span>`;
+    div.onclick = () => {
+        loadChapter(idx, 0); 
+        closeAllMenus();
+    };
+    list.appendChild(div);
+  });
+}
+
+function renderPage() {
+  const area = document.getElementById('content-area');
+  area.innerHTML = '';
+  const pageLines = currentChapterLines.slice(currentPage * linesPerPage, (currentPage + 1) * linesPerPage);
+  
+  const isPtHidden = document.getElementById('hide-pt-toggle').checked;
+
+  pageLines.forEach(line => {
+    const div = document.createElement('div');
+    
+    const enP = document.createElement('p');
+    enP.className = 'target-lang';
+    // The CSS for .word now handles visual highlighting automatically 
+    // without requiring JS to inject data attributes or listeners.
+    enP.innerHTML = line.en;
+
+    const ptP = document.createElement('p');
+    ptP.className = `native-lang ${isPtHidden ? 'hidden' : ''}`;
+    ptP.textContent = line.pt || "";
+
+    div.appendChild(enP); 
+    div.appendChild(ptP);
+
+    if (line.ge) {
+        const geWrapper = document.createElement('div');
+        geWrapper.className = 'ge-wrapper';
+        const toggleBtn = document.createElement('button');
+        toggleBtn.className = 'ge-toggle-btn';
+        toggleBtn.innerHTML = '📖 Grammar Note (PT)';
+        const geContent = document.createElement('div');
+        geContent.className = 'ge-content';
+        geContent.innerHTML = line.ge;
+        toggleBtn.onclick = () => {
+            geContent.style.display = (geContent.style.display === "block") ? "none" : "block";
+        };
+        geWrapper.appendChild(toggleBtn);
+        geWrapper.appendChild(geContent);
+        div.appendChild(geWrapper);
+    }
+
+    area.appendChild(div);
+  });
+
+  const total = Math.ceil(currentChapterLines.length / linesPerPage);
+  document.getElementById('page-indicator').textContent = `${currentPage + 1} / ${total || 1}`;
+  document.getElementById('progress-fill').style.width = `${((currentPage + 1) / (total || 1)) * 100}%`;
+  
+  // Navigation State
+  document.getElementById('prev-btn').disabled = (currentPage === 0 && currentChapterIdx === 0);
+  
+  const isLastPage = (currentPage === total - 1) || (total === 0);
+  const isLastChapter = (currentChapterIdx === allChapters.length - 1);
+  
+  const nextBtn = document.getElementById('next-btn');
+  if (isLastPage && !isLastChapter) {
+    nextBtn.textContent = "Next Ch →";
+    nextBtn.onclick = () => changePage(1); 
+  } else {
+    nextBtn.textContent = "Next →";
+    nextBtn.disabled = (isLastPage && isLastChapter);
+    nextBtn.onclick = () => changePage(1);
+  }
+}
+
+function changePage(dir) {
+  const total = Math.ceil(currentChapterLines.length / linesPerPage);
+  const newPage = currentPage + dir;
+
+  if (dir === 1 && newPage >= total) {
+      if (currentChapterIdx < allChapters.length - 1) {
+          loadChapter(currentChapterIdx + 1, 0);
+          return;
+      }
+  }
+  else if (dir === -1 && newPage < 0) {
+      if (currentChapterIdx > 0) {
+          const prevChapLines = allChapters[currentChapterIdx - 1].lines;
+          const lastPageOfPrev = Math.ceil(prevChapLines.length / linesPerPage) - 1;
+          loadChapter(currentChapterIdx - 1, lastPageOfPrev);
+          return;
+      }
+  }
+
+  if (newPage >= 0 && newPage < total) {
+      currentPage = newPage;
+      renderPage();
+  }
+}
+
+function handleNewTextBookmark() {
+  const name = prompt("Bookmark Name:", `Ch ${currentChapterIdx+1} - Pg ${currentPage + 1}`);
+  if (name) {
+    textBookmarks.push({ 
+        lesson: currentLessonFile, 
+        chapter: currentChapterIdx, 
+        page: currentPage, 
+        name 
+    });
+    localStorage.setItem('en_text_bookmarks', JSON.stringify(textBookmarks));
+    renderBookmarks();
+  }
+}
+
+function handleNewAudioBookmark() {
+  const audio = document.getElementById('main-audio');
+  const time = audio.currentTime;
+  const name = prompt("Audio Stamp Name:", `At ${Math.floor(time)}s`);
+  if (name) {
+    audioBookmarks.push({ lesson: currentLessonFile, time: time, name: name });
+    localStorage.setItem('en_audio_bookmarks', JSON.stringify(audioBookmarks));
+    renderBookmarks();
+  }
+}
+
+function renderBookmarks() {
+  const currentTextBms = textBookmarks.filter(bm => bm.lesson === currentLessonFile);
+  const currentAudioBms = audioBookmarks.filter(bm => bm.lesson === currentLessonFile);
+  const tList = document.getElementById('text-bookmark-list');
+  const aList = document.getElementById('audio-bookmark-list');
+  tList.innerHTML = ''; aList.innerHTML = '';
+
+  currentTextBms.forEach((bm) => {
+    const item = createBookmarkElement(bm.name, () => { 
+        loadChapter(bm.chapter || 0, bm.page); 
+        closeAllMenus(); 
+    });
+    tList.appendChild(item);
+  });
+  currentAudioBms.forEach((bm) => {
+    const item = createBookmarkElement(bm.name, () => { const a = document.getElementById('main-audio'); a.currentTime = bm.time; a.play(); closeAllMenus(); });
+    aList.appendChild(item);
+  });
+}
+
+function createBookmarkElement(text, onJump) {
+  const div = document.createElement('div');
+  div.className = 'link-item';
+  div.innerHTML = `<span>${text}</span>`;
+  div.onclick = onJump;
+  return div;
+}
+
+function toggleMenu(id) {
+  const menu = document.getElementById(id);
+  const isVisible = menu.style.display === 'block';
+  closeAllMenus();
+  if (!isVisible) menu.style.display = 'block';
+}
+
+function closeAllMenus() {
+  document.querySelectorAll('.overlay-menu').forEach(m => m.style.display = 'none');
+}
+
+function skipAudio(seconds) { document.getElementById('main-audio').currentTime += seconds; }
+
+function applySettings() {
+  const darkToggle = document.getElementById('dark-toggle').checked;
+  const hidePtToggle = document.getElementById('hide-pt-toggle').checked;
+  
+  appSettings.darkMode = darkToggle;
+  appSettings.hidePt = hidePtToggle;
+  localStorage.setItem('en_reader_settings', JSON.stringify(appSettings));
+  
+  document.body.classList.toggle('dark-mode', darkToggle);
+  renderPage(); 
+}
+
+init();
+</script>
+</body>
+</html>

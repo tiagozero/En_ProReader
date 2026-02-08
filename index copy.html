@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Reader - Home Library</title>
+<style>
+  :root { 
+    /* Matches reader.html Blue Accent */
+    --bg: #f5f7fa; 
+    --text: #2c3e50; 
+    --sub-text: #7f8c8d; 
+    --accent: #2980b9; 
+    --border: rgba(0,0,0,0.1); 
+    --card-bg: #ffffff;
+    --modal-overlay: rgba(0,0,0,0.5);
+  }
+  
+  /* DARK MODE SUPPORT */
+  body.dark-mode { 
+    --bg: #121212; 
+    --text: #e0e0e0; 
+    --sub-text: #aaaaaa; 
+    --border: rgba(255,255,255,0.1); 
+    --card-bg: #1e1e1e;
+    --accent: #64b5f6; /* Lighter blue for dark mode */
+    --modal-overlay: rgba(0,0,0,0.8);
+  }
+
+  body { 
+    margin: 0; padding: 40px 20px; background-color: var(--bg); 
+    font-family: "Helvetica Neue", Arial, sans-serif; color: var(--text);
+    display: flex; flex-direction: column; align-items: center;
+    transition: background 0.3s;
+  }
+
+  .container { width: 100%; max-width: 800px; }
+  
+  header { text-align: center; margin-bottom: 40px; position: relative; }
+  h1 { color: var(--accent); margin: 0; font-size: 2rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .subtitle { font-size: 0.9rem; color: var(--sub-text); margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* HEADER BUTTONS (About & Theme) */
+  .header-btn {
+    position: absolute; top: 0; background: none; border: 1px solid var(--border);
+    padding: 5px 12px; border-radius: 20px; cursor: pointer; color: var(--sub-text); font-size: 13px;
+    transition: all 0.2s;
+  }
+  .header-btn:hover { border-color: var(--accent); color: var(--accent); }
+  
+  .theme-toggle { right: 0; }
+  .about-btn { left: 0; }
+
+  /* FOLDER CARDS */
+  .folder-card { 
+    background: var(--card-bg); border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 15px; overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+  
+  .folder-header { 
+    padding: 15px 20px; background: rgba(0,0,0,0.02); 
+    font-weight: bold; border-bottom: 1px solid transparent; /* Hidden border when closed */
+    display: flex; align-items: center; justify-content: space-between; 
+    color: var(--text); cursor: pointer; user-select: none;
+  }
+  
+  .folder-header:hover { background: rgba(0,0,0,0.04); }
+  
+  .folder-title { display: flex; align-items: center; gap: 10px; color: var(--accent); }
+
+  .toggle-icon {
+    font-size: 0.8rem; color: var(--sub-text); transition: transform 0.3s ease;
+  }
+
+  /* OPEN STATE STYLES */
+  .folder-card.open { border-color: var(--accent); }
+  .folder-card.open .folder-header { border-bottom: 1px solid var(--border); }
+  .folder-card.open .toggle-icon { transform: rotate(180deg); }
+  .folder-card.open .lesson-grid { display: grid; } /* Show grid when open */
+
+  /* LESSON GRID - Hidden by default */
+  .lesson-grid { 
+    padding: 20px; 
+    display: none; /* CLOSED BY DEFAULT */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; 
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .lesson-link { 
+    padding: 14px; border: 1px solid var(--border); border-radius: 8px;
+    text-decoration: none; color: var(--text); font-size: 14px;
+    transition: all 0.2s; display: flex; align-items: center; background: rgba(0,0,0,0.01);
+    font-weight: 500; gap: 8px;
+  }
+  .lesson-link:hover { 
+    border-color: var(--accent); background: var(--accent); color: white;
+    transform: translateY(-2px); box-shadow: 0 4px 10px rgba(41, 128, 185, 0.2);
+  }
+
+  /* STATS BOX */
+  .stats-container {
+    margin-top: 40px; padding: 20px; border-top: 1px solid var(--border);
+    text-align: center; display: flex; justify-content: center; gap: 30px;
+  }
+  .stat-box { display: flex; flex-direction: column; gap: 5px; }
+  .stat-val { font-size: 1.5rem; font-weight: bold; color: var(--accent); }
+  .stat-label { font-size: 11px; text-transform: uppercase; color: var(--sub-text); font-weight: bold; }
+
+  /* ABOUT MODAL */
+  .modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--modal-overlay); z-index: 1000;
+    display: none; justify-content: center; align-items: center;
+    backdrop-filter: blur(2px);
+  }
+  .modal-overlay.active { display: flex; }
+  
+  .modal-content {
+    background: var(--card-bg); padding: 30px; border-radius: 12px;
+    max-width: 500px; width: 90%; position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  .modal-close {
+    position: absolute; top: 15px; right: 15px; cursor: pointer;
+    font-size: 1.2rem; color: var(--sub-text);
+  }
+  .modal-links a { color: var(--accent); text-decoration: none; margin-right: 15px; font-weight: bold; }
+  .modal-links a:hover { text-decoration: underline; }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <button class="header-btn about-btn" onclick="toggleModal('about-modal')">ℹ About</button>
+    
+    <button class="header-btn theme-toggle" onclick="toggleTheme()">🌗 Mode</button>
+    
+    <h1>🇬🇧 My English Library</h1>
+    <div class="subtitle">Pro Edition Reader</div>
+  </header>
+
+  <div id="library-root"></div>
+  
+  <div class="stats-container" id="stats-area"></div>
+</div>
+
+<div id="about-modal" class="modal-overlay" onclick="if(event.target === this) toggleModal('about-modal')">
+  <div class="modal-content">
+    <div class="modal-close" onclick="toggleModal('about-modal')">×</div>
+    <h2 style="color: var(--accent); margin-top: 0;">About This Reader</h2>
+    <p>Welcome to the Pro Edition English Reader. Organize your JSON lesson files into folders and track your reading progress.</p>
+    <p style="color: var(--sub-text); font-size: 0.9em;">
+      <strong>Version:</strong> 2.5.0<br>
+      <strong>Storage:</strong> LocalStorage (Browser)<br>
+      <strong>Supports:</strong> Audio syncing, Text bookmarks, Portuguese translation toggles.
+    </p>
+    <div class="modal-links" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+      <a href="#">Documentation</a>
+      <a href="#">Manage Data</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// DEMO DATA - Adjusted for English Context
+const libraryData = [
+  {
+    folderName: "Conversational English",
+    lessons: [
+      { title: "Alice's Adventures in Wonderland", file: "lessons/alice.json" },
+      { title: "02. At the Coffee Shop", file: "english/lesson2.json" },
+      { title: "03. Asking for Directions", file: "english/lesson3.json" },
+    ]
+  },
+  {
+    folderName: "Business English",
+    lessons: [
+      { title: "Job Interview Basics", file: "business/interview.json" },
+      { title: "Writing Emails", file: "business/emails.json" },
+      { title: "Negotiation Tactics", file: "business/negotiation.json" }
+    ]
+  },
+  {
+    folderName: "Short Stories (B1-B2)",
+    lessons: [
+      { title: "The Open Window", file: "stories/window.json" },
+      { title: "The Last Leaf", file: "stories/leaf.json" }
+    ]
+  },
+  {
+    folderName: "Travel English",
+    lessons: [
+      { title: "At the Airport", file: "travel/airport.json" },
+      { title: "Hotel Check-in", file: "travel/hotel.json" }
+    ]
+  } 
+];
+
+function renderLibrary() {
+  const root = document.getElementById('library-root');
+  root.innerHTML = '';
+  
+  libraryData.forEach((folder, index) => {
+    const card = document.createElement('div');
+    card.className = 'folder-card'; // Default: Closed
+    card.id = `folder-${index}`;
+    
+    // Structure: Header (clickable) + Grid (Hidden by default)
+    card.innerHTML = `
+      <div class="folder-header" onclick="toggleFolder('${index}')">
+        <div class="folder-title">📁 ${folder.folderName}</div>
+        <div class="toggle-icon">▼</div>
+      </div>
+      <div class="lesson-grid">
+        ${folder.lessons.map(lesson => `
+          <a href="reader.html?lesson=${lesson.file}" class="lesson-link">
+            📄 ${lesson.title}
+          </a>
+        `).join('')}
+      </div>
+    `;
+    root.appendChild(card);
+  });
+
+  updateStats();
+}
+
+// Logic to toggle folder visibility
+function toggleFolder(index) {
+  const card = document.getElementById(`folder-${index}`);
+  card.classList.toggle('open');
+}
+
+// Logic for About Modal
+function toggleModal(modalId) {
+  const modal = document.getElementById(modalId);
+  modal.classList.toggle('active');
+}
+
+function updateStats() {
+  // ADAPTED FOR READER.HTML STORAGE KEYS
+  // The reader uses 'en_text_bookmarks' and 'en_audio_bookmarks'
+  const textBookmarks = JSON.parse(localStorage.getItem('en_text_bookmarks')) || [];
+  const audioBookmarks = JSON.parse(localStorage.getItem('en_audio_bookmarks')) || [];
+  
+  // Calculate total distinct lessons started based on bookmarks
+  const distinctLessons = new Set([
+      ...textBookmarks.map(b => b.lesson),
+      ...audioBookmarks.map(b => b.lesson)
+  ]);
+
+  document.getElementById('stats-area').innerHTML = `
+    <div class="stat-box">
+      <div class="stat-val">${distinctLessons.size}</div>
+      <div class="stat-label">Active Lessons</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-val">${textBookmarks.length}</div>
+      <div class="stat-label">Page Marks</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-val">${audioBookmarks.length}</div>
+      <div class="stat-label">Audio Stamps</div>
+    </div>
+  `;
+}
+
+function toggleTheme() {
+  document.body.classList.toggle('dark-mode');
+  // Optional: Save preference here if you want consistency across index/reader
+  // localStorage.setItem('en_reader_settings', JSON.stringify({ darkMode: document.body.classList.contains('dark-mode') }));
+}
+
+// Check for existing theme preference from reader settings
+const savedSettings = JSON.parse(localStorage.getItem('en_reader_settings'));
+if (savedSettings && savedSettings.darkMode) {
+    document.body.classList.add('dark-mode');
+}
+
+// Initial Render
+renderLibrary();
+</script>
+</body>
+</html>
